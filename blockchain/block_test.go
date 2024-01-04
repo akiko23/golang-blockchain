@@ -18,7 +18,6 @@ func TestCreateBlock(t *testing.T) {
 	prevHash := sha256.Sum256([]byte(data))
 
 	block := CreateBlock(data, prevHash[:])
-	block.DeriveHash()
 
 	got := block.Hash
 	want := getBlockHash(block)

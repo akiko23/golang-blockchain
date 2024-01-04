@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"crypto/sha256"
 	"fmt"
+	"strconv"
 
 	"github.com/akiko23/golang-blockchain/blockchain"
 )
@@ -25,5 +26,9 @@ func main() {
 		fmt.Printf("Hash of the previous block: %x\n", block.PrevHash)
 		fmt.Printf("Hash of the current block: %x\n", block.Hash)
 		fmt.Printf("Data of the current block: %s\n\n", block.Data)
+
+		pow := blockchain.NewProof(block)
+		fmt.Printf("PoW: %s", strconv.FormatBool(pow.Validate()))
+		fmt.Println()
 	}
 }
